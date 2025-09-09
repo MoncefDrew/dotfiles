@@ -1,119 +1,74 @@
-/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-/* Catppuccin Latte - Wallust */
-/* Original Design by DC user mannatsingh */
-
-@define-color white      	#F2F2F2;
-@define-color black      	#000000;
-@define-color text       	#FFFFFF;
-@define-color lightgray  	#686868;
-@define-color darkgray   	#353535;
-
-@define-color transparent	rgba(1, 1, 1, 0.5);
-@define-color teal-trans	rgba(1, 117, 84, 0.5);
-@define-color cyan			rgba(53, 140, 169, 1);
-
-@define-color background-module     @transparent;
-@define-color border-color          @color12;
-@define-color button-color          @color11;
-@define-color button-hover          @color13;
-
-@import '../../.config/waybar/wallust/colors-waybar.css';
-@import "../waybar/style/catppuccin-themes/latte.css";
+/* ---- 💫 Wallust Dynamic Waybar 💫 ---- */
+/* Imports Wallust-generated colors.waybar */
 
 * {
-    font-family: "JetBrainsMono Nerd Font";
-    font-weight: bold;
-	min-height: 0;  
-    /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
-    font-size: 97%;
-    font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: bold;
+  min-height: 0;
+  font-size: 97%;
+  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
+@import "/home/moncef/.config/waybar/wallust/colors-waybar.css";
+
+/* ============================
+   Base Window + Tooltip
+   ============================ */
 window#waybar {
-    background: transparent;
-    border-radius: 0px;
-    color: #cba6f7;
-}
-
-window#waybar.hidden {
-    opacity: 0;
+  background-color: @background;
+  color: @foreground;
+  padding: 6px 10px; /* ⬅️ Add space around the bar */
 }
 
 tooltip {
-    background: #1e1e2e;
-    border-radius: 12px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: @border-color;
-    color: #ffffff;
+  background: @background;
+  opacity: 1;
+  border: 2px solid @color4;
+  padding: 4px 6px;
 }
 
-/*-----module groups----*/
-.modules-left,
-.modules-center,
-.modules-right {
-    background-color: @background-module;
-    border-radius:15px;
-    border-bottom:2px solid @border-color;
-	padding-top: 2px;
-	padding-bottom: 0px;
-	padding-right: 4px;
-	padding-left: 4px;
+tooltip label {
+  color: @foreground;
 }
 
-#workspaces {
-    padding: 0px 1px;
-    border-radius: 15px;
-    border:2px solid @border-color;
-    font-weight: bold;
-    font-style: normal;
-    opacity:0.8;
-    color:#FFFFFF;
-}
-
-#taskbar button,   
+/* ============================
+   Workspaces / Taskbar
+   ============================ */
+#taskbar button,
 #workspaces button {
-    color: #6E6A86;
-    box-shadow: none;
-	text-shadow: none;
-    border-radius: 30px;
-    padding-left: 4px;
-    padding-right: 4px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+  color: @color7;
+  background-color: transparent;
+  padding: 4px 6px;
 }
 
 #taskbar button.active,
 #workspaces button.active {
-    color: #ffd700;
-    border-radius: 50%;
-    background-color: black;
-    border-radius: 15px 15px 15px 15px;
-    padding-left: 8px;
-    padding-right: 8px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+  color: @color1;
 }
 
+#taskbar button.focused,
 #workspaces button.focused {
-    color: #d8dee9;
+  color: @color2;
+  background: transparent;
+  border-radius: 15px;
 }
 
 #workspaces button.urgent {
-    color: #11111b;
-    border-radius: 10px;
+  color: @background;
+  background: @color9;
+  border-radius: 15px;
 }
 
 #taskbar button:hover,
 #workspaces button:hover {
-    color: #ffd700;
-    border-radius: 10px;
- 	padding-left: 2px;
-    padding-right: 2px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+  background: transparent;
+  color: @color10;
+  border-radius: 15px;
 }
 
+/* ============================
+   Modules
+   ============================ */
 #backlight,
 #backlight-slider,
 #battery,
@@ -130,149 +85,108 @@ tooltip {
 #power-profiles-daemon,
 #pulseaudio,
 #pulseaudio-slider,
-#taskbar,
 #temperature,
 #tray,
 #window,
 #wireplumber,
 #workspaces,
-#custom-backlight,
-#custom-browser,
-#custom-cava_mviz,
-#custom-cycle_wall,
-#custom-dot_update,
-#custom-file_manager,
-#custom-keybinds,
-#custom-keyboard,
-#custom-light_dark,
-#custom-lock,
-#custom-hint,
-#custom-hypridle,
-#custom-menu,
-#custom-playerctl,
-#custom-power_vertical,
-#custom-power,
-#custom-quit,
-#custom-reboot,
-#custom-settings,
-#custom-spotify,
-#custom-swaync,
-#custom-tty,
-#custom-updater,
-#custom-hyprpicker,
-#custom-weather,
-#custom-weather.clearNight,
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight,
-#custom-weather.default, 
-#custom-weather.rainyDay,
-#custom-weather.rainyNight,
-#custom-weather.severe,
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight,
-#custom-weather.sunnyDay {
-    color: #e5d9f5;
-	padding-right: 6px;
-	padding-left: 6px;;
+#custom-* {
+  opacity: 1;
+  padding: 4px 10px;
+  color: @foreground;
 }
 
-#temperature.critical {
-    background-color: #ff0000;
+/* ============================
+   Special Modules
+   ============================ */
+#idle_inhibitor {
+  color: @color13;
 }
 
-@keyframes blink {
-    to {
-        color: #000000;
-    }
+#mpris {
+  color: @color5;
 }
 
+#battery {
+  color: @color2;
+  padding-left: 15px;
+  border-radius: 15px 0 0 15px;
+}
+
+#battery.critical:not(.charging) {
+  color: @color9;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#network {
+  color: @color4;
+}
+
+#custom-weather {
+  color: @color3;
+  border-radius: 15px;
+}
+
+#pulseaudio {
+  color: @color6;
+}
+
+#clock {
+  color: @color12;
+}
+
+/* ============================
+   Rofi Menu Button
+   ============================ */
+#custom-menu {
+  padding: 8px 16px; /* ⬅️ More padding for Rofi menu button */
+  border-radius: 12px;
+  color: @foreground;
+  background: transparent;
+}
+
+#custom-menu:hover {
+  background: @color0;
+  color: @color10;
+}
+
+/* ============================
+   Sliders
+   ============================ */
 #backlight-slider slider,
 #pulseaudio-slider slider {
-    min-width: 0px;
-    min-height: 0px;
-    opacity: 0;
-    background-image: none;
-    border: none;
-    box-shadow: none;
+  min-height: 7px;
+  min-width: 15px;
+  opacity: 0;
+  background-color: @foreground;
+  box-shadow: 1px 5px 6px 1px #272727;
 }
 
 #backlight-slider trough,
 #pulseaudio-slider trough {
-    min-width: 80px;
-    min-height: 5px;
-    border-radius: 5px;
-    background-color: #22252a;
+  min-height: 100px;
+  min-width: 7px;
+  background-color: @color0;
 }
 
 #backlight-slider highlight,
 #pulseaudio-slider highlight {
-    min-height: 10px;
-    border-radius: 5px;
-    background-color: #ba5663;
+  min-width: 5px;
+  border-radius: 5px;
+  background-color: @color4;
 }
 
-#pulseaudio-slider,
-#pulseaudio {
-	color: @color13;
+/* ============================
+   Animations
+   ============================ */
+@keyframes blink {
+  to {
+    background-color: @foreground;
+    color: @background;
+  }
 }
 
-#pulseaudio.muted {
-    color: red;
-}
-
-#memory {
-	color: @sapphire;
-}
-
-#cpu {
-	color: @mauve;
-}
-
-#battery {
-	color: @rosewater;
-}
-
-#disk {
-	color: @sky;
-}
-
-#temperature.critical {
-    background-color: @red;
-}
-
-#battery.critical:not(.charging) {
-	color: #f53c3c;
-	animation-name: blink;
-	animation-duration: 3.0s;
-	animation-timing-function: steps(12);
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-}
-
-#custom-hypridle,
-#custom-lock,
-#idle_inhibitor {
-    color: @teal;
-}
-
-/*-----Indicators----*/
-#custom-hypridle.notactive,
-#idle_inhibitor.activated {
-	color: #39FF14;
-}
-
-
-#clock#2 {
-    color: #efe8f7;
-}
-
-#clock {
-	color: @sapphire;
-    border-radius: 15px;
-    border:2px solid @border-color;
-}
-#custom-updates {
-    color: @yellow;
-}
-#swaync{
-    color: #ffd700;}

@@ -1,0 +1,10 @@
+preload = [
+    "~/Pictures/wallpapers/lainMain.png",
+    "~/Pictures/wallpapers/lain.jpg"
+]
+
+wallpapers = [
+    { monitor = "eDP-1", path = "~/Pictures/wallpapers/lain.jpg" },
+    { monitor = "HDMI-A-1", path = "~/Pictures/wallpapers/lainMain.png" }
+]
+

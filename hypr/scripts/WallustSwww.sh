@@ -27,13 +27,20 @@ if [ -f "$cache_file" ]; then
         ln_success=true  # Set the flag to true upon successful execution
     fi
     # copy the wallpaper for wallpaper effects
-	cp -r "$wallpaper_path" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
+    cp -r "$wallpaper_path" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
 fi
 
 # Check the flag before executing further commands
 if [ "$ln_success" = true ]; then
     # execute wallust
-	echo 'about to execute wallust'
+    echo 'about to execute wallust'
     # execute wallust skipping tty and terminal changes
     wallust run "$wallpaper_path" -s &
+
+    # reload kitty to apply new wallust theme
+    if pidof kitty >/dev/null; then
+        kill -SIGUSR1 $(pidof kitty)
+        echo "Kitty reloaded with new colors."
+    fi
 fi
+
